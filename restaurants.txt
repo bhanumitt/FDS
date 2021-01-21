@@ -1,0 +1,1 @@
+abc@xyz.com;qwerty;Restaurant;145, Delhi;2021-01-21;60;[['halwa', 'sweet', '80'], ['frappe', 'desert', '140'], ['naan', 'bread', '80'], ['dosa', 'south indian', '410']]

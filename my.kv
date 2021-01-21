@@ -1,0 +1,820 @@
+<HomeWindow>:
+    name: "home"
+    
+    FloatLayout:
+        cols: 1
+        
+        FloatLayout:
+            size: root.width, root.height/2
+            
+            canvas.before:
+                Rectangle:
+                    size: root.width, 3*root.height/4
+                    pos: (0, root.height/4)
+                    source: "brooke-lark-HlNcigvUi4Q-unsplash.jpg"
+                
+                Rectangle:
+                    size: root.width, root.height/4
+                    pos: self.pos
+                    source: "drew-beamer-kUHfMW8awpE-unsplash.jpg"
+            
+            Label: 
+                text: "FDS"
+                size_hint: 0.1, 0.1
+                pos_hint: {"x": 0, "top": 1}
+                font_size: (root.width**2 + root.height**2) / 14**4   
+                color: 0, 0, 0, 1
+                
+            Button:
+                size_hint: 0.2, 0.1
+                pos_hint:{"x":0.55, "top": 1}
+                text: "Sign up"
+                background_color: 1, 1, 0, 0.2
+                on_release:
+                    app.root.current = "create"
+                    root.manager.transition.direction = "down"
+                    
+            Button:
+                size_hint: 0.2, 0.1
+                pos_hint:{"x":0.8, "top":1}
+                text: "Login"
+                background_color: 1, 1, 0, 0.2
+                on_release:
+                    app.root.current = "login"
+                    root.manager.transition.direction = "up"
+        
+        Label: 
+            text: "For Restaurant Partners"
+            size_hint: 0.6, 0.1
+            pos_hint: {"x": 0.2, "top": 0.25}
+            font_size: (root.width**2 + root.height**2) / 14**4   
+            color: 0, 0, 0, 1
+            
+        Button:
+            size_hint: 0.3, 0.08
+            pos_hint:{"x":0.1, "top":0.15}
+            text: "Register"
+            on_release:
+                app.root.current = "partnercreate"
+                root.manager.transition.direction = "down"
+        
+        Button:
+            size_hint: 0.3, 0.08
+            pos_hint:{"x":0.6, "top":0.15}
+            text: "Login"
+            on_release:
+                app.root.current = "partnerlogin"
+                root.manager.transition.direction = "up"
+        
+
+<CreateAccountWindow>:
+    name: "create"
+
+    namee: namee
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+        
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "monika-grabkowska-TAj4X5-eRqE-unsplash.jpg"
+        
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Create an Account"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8}
+                text: "Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13*2}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13*2}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.25}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 16**4
+            text: "Already have an Account? Log In"
+            background_color: 0, 0, 1, 0.3
+            color: 1, 1, 1, 1
+            on_release:
+                root.manager.transition.direction = "left"
+                root.login()
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 1, 0.3
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+<PartnerCreateAccountWindow>:
+    name: "partnercreate"
+
+    namee: namee
+    address: address
+    email: email
+    password: passw
+
+    FloatLayout:
+        cols:1
+        
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "monika-grabkowska-TAj4X5-eRqE-unsplash.jpg"
+        
+        FloatLayout:
+            size: root.width, root.height/2
+
+            Label:
+                text: "Register your Restaurant"
+                size_hint: 0.8, 0.2
+                pos_hint: {"x":0.1, "top":1}
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8}
+                text: "Restaurant Name: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8}
+                size_hint: 0.4, 0.12
+                id: namee
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+            
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.13}
+                text: "Address: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.13}
+                size_hint: 0.4, 0.12
+                id: address
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.26}
+                text: "Email: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.26}
+                size_hint: 0.4, 0.12
+                id: email
+                multiline: False
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            Label:
+                size_hint: 0.5,0.12
+                pos_hint: {"x":0, "top":0.8-0.39}
+                text: "Password: "
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+            TextInput:
+                pos_hint: {"x":0.5, "top":0.8-0.39}
+                size_hint: 0.4, 0.12
+                id: passw
+                multiline: False
+                password: True
+                font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.02,"top":1}
+            size_hint: 0.1, 0.1
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Home"
+            background_color: 0, 0, 1, 0
+            color: 1, 1, 1, 1
+            on_release:
+                root.manager.transition.direction = "up"
+                root.reset()
+                app.root.current = "home"
+
+        Button:
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.15
+            text: "Submit"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 1, 0.3
+            on_release:
+                root.manager.transition.direction = "left"
+                root.submit()
+
+
+<LoginWindow>:
+    name: "login"
+
+    email: email
+    password: password
+
+    FloatLayout:
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "nattu-adnan-Ai2TRdvI6gM-unsplash.jpg"
+
+        Label:
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.25, 0.1
+            color: 0, 0, 0, 1
+
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.36 , "top":0.71}
+            size_hint: 0.55, 0.1
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.6}
+            size_hint: 0.25, 0.1
+            color: 0, 0, 0, 1
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.36, "top":0.6}
+            size_hint: 0.55, 0.1
+
+        Button:
+            pos_hint:{"x":0,"top":0.95}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Home"
+            background_color: 1, 1, 0, 0
+            on_release:
+                root.reset()
+                app.root.current = "home"
+                root.manager.transition.direction = "up"
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Login"
+            background_color: 0, 1, 0, 0.5
+            on_release:
+                root.loginBtn()
+                root.manager.transition.direction = "left"
+                
+<PartnerLoginWindow>:
+    name: "partnerlogin"
+
+    email: email
+    password: password
+
+    FloatLayout:
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "nattu-adnan-Ai2TRdvI6gM-unsplash.jpg"
+
+        Label:
+            text:"Email: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.25, 0.1
+            color: 0, 0, 0, 1
+
+        TextInput:
+            id: email
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            pos_hint: {"x": 0.36 , "top":0.71}
+            size_hint: 0.55, 0.1
+
+        Label:
+            text:"Password: "
+            font_size: (root.width**2 + root.height**2) / 13**4
+            pos_hint: {"x":0.1, "top":0.6}
+            size_hint: 0.25, 0.1
+            color: 0, 0, 0, 1
+
+        TextInput:
+            id: password
+            font_size: (root.width**2 + root.height**2) / 13**4
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.36, "top":0.6}
+            size_hint: 0.55, 0.1
+
+        Button:
+            pos_hint:{"x":0,"top":0.95}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Home"
+            background_color: 1, 1, 0, 0
+            on_release:
+                root.reset()
+                app.root.current = "home"
+                root.manager.transition.direction = "up"
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Login"
+            background_color: 0, 1, 0, 0.5
+            on_release:
+                root.loginBtn()
+                root.manager.transition.direction = "left"
+
+<PartnerMainWindow>:
+    name: "partnermain"
+    
+    value: value
+    
+    FloatLayout:
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "keith-misner-h0Vxgz5tyXA-unsplash.jpg"
+        
+        Button:
+            pos_hint:{"x":0.3,"top":0.9}
+            size_hint: 0.4, 0.2
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Add Food Item"
+            background_color: 0.961, 0.961, .863, 0.5
+            on_release:
+                app.root.current = "addfood"
+                root.manager.transition.direction = "left"
+
+        Button:
+            pos_hint:{"x":0.3,"top":0.6}
+            size_hint: 0.4, 0.2
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Update Food Item"
+            background_color: 0.961, 0.961, .863, 0.5
+            on_release:
+                app.root.current = "updatefood"
+                root.manager.transition.direction = "left"
+                
+        Label:
+            pos_hint:{"x":0,"top":0.3}
+            size_hint: 0.3, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Order Limit"
+                
+        TextInput:
+            id: value
+            pos_hint:{"x":0.3,"top":0.3}
+            size_hint: 0.3,0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            multiline: False
+            
+        Button:
+            pos_hint:{"x":0.6,"top":0.3}
+            size_hint: 0.2, 0.1
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Set"
+            background_color: 0.961, 0.961, .863, 0.5
+            on_release:
+                root.limitSet()
+                
+        Button:
+            pos_hint:{"x":0.8,"top":0.95}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Logout"
+            background_color: 1, 1, 0, 0
+            on_release:
+                root.reset()
+                app.root.current = "partnerlogin"
+                root.manager.transition.direction = "right"
+
+<AddFood>:
+    name: "addfood"
+    
+    namee: namee
+    cuisine: cuisine
+    price: price
+
+    FloatLayout:
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "omar-gattis-kR6SCDE_Bc4-unsplash.jpg"
+        
+        Label:
+            pos_hint:{"x":0,"top":0.85}
+            size_hint: 0.5, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Dish Name: "
+                
+        TextInput:
+            id: namee
+            pos_hint:{"x":0.5,"top":0.85}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            
+        Label:
+            pos_hint:{"x":0,"top":0.67}
+            size_hint: 0.5, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Cuisine Name: "
+                
+        TextInput:
+            id: cuisine
+            pos_hint:{"x":0.5,"top":0.67}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            
+        Label:
+            pos_hint:{"x":0,"top":0.49}
+            size_hint: 0.5, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Price: "
+                
+        TextInput:
+            id: price
+            pos_hint:{"x":0.5,"top":0.49}
+            size_hint: 0.4,0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            
+        Button:
+            pos_hint:{"x":0.35, "top": 0.31}
+            size_hint:0.3, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Add Dish"
+            background_color: 1, 0, 1, 0.7
+            on_release:
+                root.addition()
+                
+        Button:
+            pos_hint:{"x":0,"top":0.95}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Go Back"
+            background_color: 1, 1, 0, 0
+            on_release:
+                root.reset()
+                app.root.current = "partnermain"
+                root.manager.transition.direction = "right"
+        
+<UpdateFood>:      
+    name: "updatefood"
+
+    oldName: oldName
+    namee: namee
+    cuisine: cuisine
+    price: price
+    
+    FloatLayout:  
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "tools-for-motivation-KvTOwKoji7g-unsplash.jpg"
+                
+        Label:
+            pos_hint:{"x":0,"top":0.95}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Dish to Update: "
+                
+        TextInput:
+            id: oldName
+            pos_hint:{"x":0.4,"top":0.95}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            
+        Button:
+            pos_hint:{"x":0.8, "top": 0.95}
+            size_hint: 0.15, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Search"
+            background_color: 1, 1, 0, 0.8
+            on_release:
+                root.match()  
+     
+        Label:
+            pos_hint:{"x":0,"top":0.76}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Name: "
+                        
+        TextInput:
+            id: namee
+            pos_hint:{"x":0.4,"top":0.76}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+            
+        Label:
+            pos_hint:{"x":0,"top":0.57}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Cuisine: "
+                        
+        TextInput:
+            id: cuisine
+            pos_hint:{"x":0.4,"top":0.57}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+                    
+        Label:
+            pos_hint:{"x":0,"top":0.38}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Price: "
+                        
+        TextInput:
+            id: price
+            pos_hint:{"x":0.4,"top":0.38}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            multiline: False
+                
+        Button:
+            pos_hint:{"x":0.35, "top": 0.19}
+            size_hint:0.3, 0.15
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Update Dish"
+            background_color: 1, 1, 0, 0.7
+            on_release:
+                root.update()
+                
+        Button:
+            pos_hint:{"x":0,"top":1}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Go Back"
+            background_color: 1, 1, 0, 0
+            on_release:
+                root.reset()
+                app.root.current = "partnermain"
+                root.manager.transition.direction = "right"
+
+<MainWindow>:
+    name: "main"
+    
+    FloatLayout:
+    
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "pineapple-supply-co-Q7PclNhVRI0-unsplash.jpg"
+        
+        Button:
+            pos_hint:{"x":0.3,"top":0.8}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "View/Update Profile"
+            background_color: 0, 0, 1, 0.5
+            on_release:
+                app.root.current = "view"
+                root.manager.transition.direction = "left"
+
+        Button:
+            pos_hint:{"x":0.3,"top":0.58}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Delete Profile"
+            background_color: 0, 0, 1, 0.5
+            on_release:
+                root.delete()
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+                
+        Button:
+            pos_hint:{"x":0.3,"top":0.36}
+            size_hint: 0.4, 0.15
+            font_size: (root.width**2 + root.height**2) / 15**4
+            text: "Order Food"
+            background_color: 0, 0, 1, 0.5
+            on_release:
+                app.root.current = "order"
+                root.manager.transition.direction = "left"
+        
+        Button:
+            pos_hint:{"x":0.8,"top":0.95}
+            size_hint: 0.2, 0.07
+            font_size: (root.width**2 + root.height**2) / 13**4
+            text: "Logout"
+            background_color: 1, 1, 0, 0
+            on_release:
+                app.root.current = "login"
+                root.manager.transition.direction = "right"
+
+<ViewWindow>:
+    name: "view"
+    
+    namee: namee
+    address: address
+    
+    FloatLayout:
+        
+        canvas.before:
+            Rectangle:
+                size: self.size
+                pos: self.pos
+                source: "simon-berger-2JONUbTfN38-unsplash.jpg"
+        
+        Label:
+            text: "View/Update your Profile"
+            size_hint: 0.8, 0.2
+            pos_hint: {"x":0.1, "top":1}
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Label:
+            size_hint: 0.5,0.15
+            pos_hint: {"x":0, "top":0.8}
+            text: "Name: "
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        TextInput:
+            pos_hint: {"x":0.5, "top":0.8}
+            size_hint: 0.4, 0.15
+            id: namee
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 14**4
+            
+        Label:
+            size_hint: 0.5,0.15
+            pos_hint: {"x":0, "top":0.58}
+            text: "Address: "
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        TextInput:
+            pos_hint: {"x":0.5, "top":0.58}
+            size_hint: 0.4, 0.15
+            id: address
+            multiline: False
+            font_size: (root.width**2 + root.height**2) / 14**4
+
+        Button:
+            pos_hint:{"x":0.02,"top":1}
+            size_hint: 0.1, 0.1
+            font_size: (root.width**2 + root.height**2) / 14**4
+            text: "Go Back"
+            background_color: 0, 0, 1, 0
+            color: 1, 1, 1, 1
+            on_release:
+                root.manager.transition.direction = "right"
+                app.root.current = "main"
+
+        Button:
+            pos_hint:{"x":0.3, "top":0.36}
+            size_hint: 0.4, 0.15
+            text: "Update Profile"
+            font_size: (root.width**2 + root.height**2) / 14**4
+            color: 1, 1, 1, 1
+            background_color: 0, 0, 1, 0.3
+            on_release:
+                root.manager.transition.direction = "left"
+                root.update()
+                
+<OrderWindow>:
+    name: "order"
+    
+    namee: namee
+    cuisine: cuisine
+    
+    ScrollView:
+        
+        FloatLayout:
+            
+            canvas.before:
+                Color: 
+                    rgba: 1, 1, 0, 0.8
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                
+            Label:
+                pos_hint:{"x":0,"top":0.95}
+                size_hint: 0.4, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                text: "Restaurant Name: "
+                    
+            TextInput:
+                id: namee
+                pos_hint:{"x":0.4,"top":0.95}
+                size_hint: 0.4, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                multiline: False
+                
+            Button:
+                pos_hint:{"x":0.8, "top": 0.95}
+                size_hint: 0.15, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                text: "Search"
+                background_color: 1, 0, 0, 0.8
+                on_release:
+                    root.match_restaurant()
+                    
+            Label:
+                pos_hint:{"x":0,"top":0.77}
+                size_hint: 0.4, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                text: "Cuisine: "
+                    
+            TextInput:
+                id: cuisine
+                pos_hint:{"x":0.4,"top":0.77}
+                size_hint: 0.4, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                multiline: False
+                
+            Button:
+                pos_hint:{"x":0.8, "top": 0.77}
+                size_hint: 0.15, 0.15
+                font_size: (root.width**2 + root.height**2) / 14**4
+                text: "Search"
+                background_color: 1, 0, 0, 0.8
+                on_release:
+                    root.match_cuisine()
+            
+            Label:
+                pos_hint:{"x":0.1,"top":0.6}
+                size_hint: 0.8, 0.1
+                font_size: (root.width**2 + root.height**2) / 14**4
+                text: "Type 'all' if you want to see the whole menu."
+
+	        Button:
+                pos_hint:{"x":0,"top":0.1}
+                size_hint: 0.2, 0.07
+                font_size: (root.width**2 + root.height**2) / 15**4
+                text: "Go Back"
+                background_color: 1, 1, 0, 0
+                on_release:
+                    app.root.current = "main"
+                    root.manager.transition.direction = "right"
